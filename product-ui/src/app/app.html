@@ -1,0 +1,21 @@
+<div class="container">
+  <h1>Product Details</h1>
+
+  <p>Click below to fetch product information from the API.</p>
+
+  <button (click)="getProduct()" [disabled]="loading()">
+    {{ loading() ? 'Loading...' : 'Get Product' }}
+  </button>
+
+  @if (product(); as item) {
+    <div class="product-card">
+      <h2>{{ item.name }}</h2>
+      <p><strong>Product ID:</strong> {{ item.id }}</p>
+      <p><strong>Price:</strong> ${{ item.price }}</p>
+    </div>
+  }
+
+  @if (error()) {
+    <p class="error">{{ error() }}</p>
+  }
+</div>
